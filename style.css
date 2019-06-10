@@ -9,3 +9,8 @@ body {
     object-fit: cover;
 }
 
+.card {
+    margin-top: 10px;
+}
+
+
