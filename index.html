@@ -20,12 +20,14 @@
         <div class="row">
             <div ng-repeat="actor in actors" class="col-md-3 col-sm-6">
                 <div class="card">
-                    <img class="card-img-top" src={{actor.image}} alt={{actor.lname}}>
+                    <img class="card-img-top" src={{actor.image}} alt={{actor.fullName}}>
                     <div class="card-body">
                         <a href="{{actor.imdbLink}}">
-                            <h4 class="card-title">{{actor.fname + " " + actor.lname}}</h4>
-                            <p class="card-text">Birthday: {{actor.birthday | date}}</p>
+                            <h4 class="card-title">{{actor.fullName()}}</h4>
+                            <h4>{{actor.fullName()}}</h4>
                         </a>
+                        <p class="card-text">Birthday: {{actor.birthday | date}}</p>
+
                     </div>
                 </div>
             </div>

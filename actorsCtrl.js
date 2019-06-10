@@ -17,8 +17,8 @@ app.controller("actorsCtrl", function($scope) {
 
     // load 6 actors
     $scope.actors = [];
-    $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1948-10-25", "https://www.imdb.com/name/nm0000545"));
-    $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1948-10-25", "https://www.imdb.com/name/nm0000545"));
+    $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1945-07-26", "https://www.imdb.com/name/nm0000545"));
+    $scope.actors.push(new Actor("Clint", "Eastwood", "https://m.media-amazon.com/images/M/MV5BMTg3MDc0MjY0OV5BMl5BanBnXkFtZTcwNzU1MDAxOA@@._V1_SY1000_CR0,0,740,1000_AL_.jpg", "1930-05-31", "https://www.imdb.com/name/nm0000142"));
     $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1948-10-25", "https://www.imdb.com/name/nm0000545"));
     $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1948-10-25", "https://www.imdb.com/name/nm0000545"));
     $scope.actors.push(new Actor("Helen", "Mirren", "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_SY1000_CR0,0,789,1000_AL_.jpg", "1948-10-25", "https://www.imdb.com/name/nm0000545"));
@@ -27,10 +27,10 @@ app.controller("actorsCtrl", function($scope) {
     console.log($scope.actors);
 
     //**** Presentation Logic ****/
-    $scope.addActor = function() {
-        var actor = new Actor("Clint", "Eastwood", "gfsdf.jpg", "1940-4-5", "https://www.imdb.com/name/nm0000645");
-        $scope.actors.push(actor);
-    }
+    // $scope.addActor = function() {
+    //     var actor = new Actor("Clint", "Eastwood", "gfsdf.jpg", "1940-4-5", "https://www.imdb.com/name/nm0000645");
+    //     $scope.actors.push(actor);
+    // }
 
 
 });
