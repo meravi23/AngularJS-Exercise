@@ -17,12 +17,17 @@
     <div class="container">
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
-        <div class="card" style="width:400px">
-            <img class="card-img-top" src="https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_.jpg" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">Morgan Freeman</h4>
-                <p class="card-text">Birthday: </p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+        <div class="row">
+            <div ng-repeat="actor in actors" class="col-md-3 col-sm-6">
+                <div class="card">
+                    <img class="card-img-top" src={{actor.image}} alt={{actor.lname}}>
+                    <div class="card-body">
+                        <a href="{{actor.imdbLink}}">
+                            <h4 class="card-title">{{actor.fname + " " + actor.lname}}</h4>
+                            <p class="card-text">Birthday: {{actor.birthday | date}}</p>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
