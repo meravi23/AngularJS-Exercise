@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="actorsApp">
 
 <head>
     <meta charset="UTF-8">
@@ -13,8 +13,19 @@
     <script src="actorsCtrl.js"></script>
 </head>
 
-<body>
-
+<body ng-controller="actorsCtrl">
+    <div class="container">
+        <h1>Actors Gallery</h1>
+        <!-- {{test}} -->
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_.jpg" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
