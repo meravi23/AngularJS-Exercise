@@ -18,15 +18,14 @@
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
         <div class="row">
-            <div ng-repeat="actor in actors | filter : filterActor" class="col-md-3 col-sm-6">
-                <div class="card">
+            <div ng-repeat="actor in actors | filter : filterActor" ng-class="{'bold-border': 'selected'===true}" class="col-md-3 col-sm-6">
+                <div class="card thin-border" ng-click="">
                     <img class="card-img-top" src={{actor.image}} title={{actor.getFullName()}}>
                     <div class="card-body">
                         <a href="{{actor.imdbLink}}">
                             <h4 class="card-title">{{actor.getFullName()}}</h4>
                         </a>
                         <p class="card-text">Birthday: {{actor.birthday | date}}</p>
-
                     </div>
                 </div>
             </div>

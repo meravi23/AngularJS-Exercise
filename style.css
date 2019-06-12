@@ -2,7 +2,6 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
 .card-img-top {
     width: 100%;
     height: 15vw;
@@ -13,4 +12,11 @@ body {
     margin-top: 10px;
 }
 
+.bold-border {
+    border: 2px solid blue;
+}
 
+.thin-border {
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}

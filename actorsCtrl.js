@@ -44,7 +44,20 @@ app.controller("actorsCtrl", function($scope) {
         } else {
             return false;
         }
-    }
+    };
+
+    $scope.class = "thin-border";
+    $scope.selected = false;
+
+    $scope.addBoldBorder = function() {
+
+        if ($scope.class === "thin-border") {
+            $scope.class = "bold-border";
+            $scope.selected = true;
+        } else {
+            $scope.class = "thin-border";
+        }
+    };
 
 
 });
