@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AngularJS Exercise</title>
-    <script data-require="angularjs@1.6.4" data-semver="1.6.4"
-        src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <script data-require="angularjs@1.6.4" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
@@ -21,7 +20,7 @@
         <div class="row">
             <div ng-repeat="actor in actors" class="col-md-3 col-sm-6">
                 <div class="card">
-                    <img class="card-img-top" src={{actor.image}} alt={{actor.fullName}}>
+                    <img class="card-img-top" src={{actor.image}} title={{actor.getFullName()}}>
                     <div class="card-body">
                         <a href="{{actor.imdbLink}}">
                             <h4 class="card-title">{{actor.getFullName()}}</h4>
