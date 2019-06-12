@@ -32,5 +32,19 @@ app.controller("actorsCtrl", function($scope) {
     //     $scope.actors.push(actor);
     // }
 
+    $scope.query = "";
+
+    $scope.filterActor = function(actor) {
+        if (!$scope.query) {
+            return true;
+        }
+
+        if (actor.fname.toLowerCase().includes($scope.query.toLowerCase()) || actor.lname.toLowerCase().includes($scope.query.toLowerCase())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 });

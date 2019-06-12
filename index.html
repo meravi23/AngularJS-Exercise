@@ -18,7 +18,7 @@
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
         <div class="row">
-            <div ng-repeat="actor in actors" class="col-md-3 col-sm-6">
+            <div ng-repeat="actor in actors | filter : filterActor" class="col-md-3 col-sm-6">
                 <div class="card">
                     <img class="card-img-top" src={{actor.image}} title={{actor.getFullName()}}>
                     <div class="card-body">
@@ -31,6 +31,27 @@
                 </div>
             </div>
         </div>
+        <input class="form-control my-3" placeholder="Filter actors by first name or last name" ng-model="query">
+
+
+        <div>
+            <div class="form-check">
+                <label class="form-check-label">
+              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by first name
+            </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by last name
+            </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by birthday
+            </label>
+            </div>
+        </div>
+
     </div>
 </body>
 
