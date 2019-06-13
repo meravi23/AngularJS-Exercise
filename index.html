@@ -17,12 +17,12 @@
     <div class="container">
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
-        <div class="row">
-            <div ng-repeat="actor in actors | filter : filterActor" ng-class="{'bold-border': 'selected'===true}" class="col-md-3 col-sm-6">
-                <div class="card thin-border" ng-click="">
-                    <img class="card-img-top" src={{actor.image}} title={{actor.getFullName()}}>
+        <div class="row" {{selectedOrder}}>
+            <div ng-repeat="actor in actors | filter : filterActor" class="col-md-3 col-sm-6" ng-class="{'bold-border' : actor === selectedActor}">
+                <div class="card" ng-click="onSelectActor(actor)">
+                    <img class="card-img-top" ng-src="{{actor.image}} title={{actor.getFullName()}}">
                     <div class="card-body">
-                        <a href="{{actor.imdbLink}}">
+                        <a ng-href="{{actor.imdbLink}}" target="_BLANK">
                             <h4 class="card-title">{{actor.getFullName()}}</h4>
                         </a>
                         <p class="card-text">Birthday: {{actor.birthday | date}}</p>
@@ -33,20 +33,22 @@
         <input class="form-control my-3" placeholder="Filter actors by first name or last name" ng-model="query">
 
 
+        <p class="text-center" ng-show="filterActor.length===0">Sorry, no actors were found</p>
+
         <div>
             <div class="form-check">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by first name
+              <input type="radio" ng-model="selectedOrder" value="fname" class="form-check-input" name="optradio">Order by first name
             </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by last name
+              <input type="radio" ng-model="selectedOrder" value="lname" class="form-check-input" name="optradio">Order by last name
             </label>
             </div>
             <div class="form-check disabled">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder.lname" class="form-check-input" name="optradio">Order by birthday
+              <input type="radio" ng-model="selectedOrder" value="birthday" class="form-check-input" name="optradio">Order by birthday
             </label>
             </div>
         </div>
