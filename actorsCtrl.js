@@ -38,7 +38,6 @@ app.controller("actorsCtrl", function ($scope, $http) {
     // }
 
     $scope.query = "";
-
     $scope.filterActor = function (actor) {
         if (!$scope.query) {
             return true;
@@ -60,10 +59,10 @@ app.controller("actorsCtrl", function ($scope, $http) {
         }
     }
 
-    $scope.orderByProperty = "";
+    $scope.orderProperty = "";
     $scope.orderByProperty = function (propertyName) {
 
-        $scope.orderByProperty = propertyName;
+        $scope.orderProperty = propertyName;
 
     };
 

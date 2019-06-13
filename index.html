@@ -19,7 +19,7 @@
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
         <div class="row" {{selectedOrder}}>
-            <div ng-repeat="actor in actors | filter : filterActor | orderBy : orderByProperty()" class="col-md-3 col-sm-6"
+            <div ng-repeat="actor in actors | filter : filterActor | orderBy : orderProperty" class="col-md-3 col-sm-6"
                 ng-class="{'bold-border' : actor === selectedActor}">
                 <div class="card" ng-click="onSelectActor(actor)">
                     <img class="card-img-top" ng-src="{{actor.image}} title={{actor.getFullName()}}">
@@ -41,19 +41,19 @@
         <div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" ng-change="orderByProperty()" value="fname" class="form-check-input"
+                    <input type="radio" ng-change="orderByProperty('fname')" ng-model="value" value="fname" class="form-check-input"
                         name="optradio">Order by first name
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" ng-change="orderByProperty()" value="lname" class="form-check-input"
+                    <input type="radio" ng-change="orderByProperty('lname')" ng-model="value" value="lname" class="form-check-input"
                         name="optradio">Order by last name
                 </label>
             </div>
             <div class="form-check disabled">
                 <label class="form-check-label">
-                    <input type="radio" ng-change="orderByProperty()" value="birthday" class="form-check-input"
+                    <input type="radio" ng-change="orderByProperty('birthday')" ng-model="value" value="birthday" class="form-check-input"
                         name="optradio">Order by birthday
                 </label>
             </div>
