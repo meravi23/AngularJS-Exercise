@@ -1,4 +1,4 @@
-app.controller("actorsCtrl", function($scope, $http) {
+app.controller("actorsCtrl", function ($scope, $http) {
     //$scope.test = "blabla";
     //**** Business Logic - eventually to be moved to service ****
 
@@ -10,21 +10,21 @@ app.controller("actorsCtrl", function($scope, $http) {
         this.imdbLink = imdbLink;
     }
 
-    Actor.prototype.getFullName = function() {
+    Actor.prototype.getFullName = function () {
         var fullName = this.fname + " " + this.lname;
         return fullName;
     }
 
     // load 6 actors
     $scope.actors = [];
-    $http.get("actors.json").then(function(response) {
+    $http.get("actors.json").then(function (response) {
         // $scope.actors = response.data;
         for (var i = 0; i < response.data.length; i++) {
             var actor = new Actor(response.data[i].fname, response.data[i].lname, response.data[i].image,
                 response.data[i].birthday, response.data[i].imdbLink);
             $scope.actors.push(actor);
         }
-    }, function(err) {
+    }, function (err) {
         console.error(err);
     });
 
@@ -39,7 +39,7 @@ app.controller("actorsCtrl", function($scope, $http) {
 
     $scope.query = "";
 
-    $scope.filterActor = function(actor) {
+    $scope.filterActor = function (actor) {
         if (!$scope.query) {
             return true;
         }
@@ -52,7 +52,7 @@ app.controller("actorsCtrl", function($scope, $http) {
     };
 
     $scope.selectedActor = null;
-    $scope.onSelectActor = function(actor) {
+    $scope.onSelectActor = function (actor) {
         if ($scope.selectedActor === actor) {
             $scope.selectedActor = null;
         } else {
@@ -60,19 +60,13 @@ app.controller("actorsCtrl", function($scope, $http) {
         }
     }
 
-    $scope.selected = "";
-    $scope.orderByProp = function(propName) {
+    $scope.orderByProperty = "";
+    $scope.orderByProperty = function (propertyName) {
 
-        if ($scope.orderProp !== propName) {
-            // Clicking on this column for the first time
-            // I want an ascending order so putting false in reverse
-            $scope.orderProp = propName;
-            $scope.orderReverse = false;
-        } else {
-            // Clicking on the same columns - reversing the order
-            $scope.orderReverse = !$scope.orderReverse;
-        }
+        $scope.orderByProperty = propertyName;
+
     };
+
 
 
 });

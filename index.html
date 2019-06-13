@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AngularJS Exercise</title>
-    <script data-require="angularjs@1.6.4" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <script data-require="angularjs@1.6.4" data-semver="1.6.4"
+        src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
@@ -18,7 +19,8 @@
         <h1>Actors Gallery</h1>
         <!-- {{test}} -->
         <div class="row" {{selectedOrder}}>
-            <div ng-repeat="actor in actors | filter : filterActor" class="col-md-3 col-sm-6" ng-class="{'bold-border' : actor === selectedActor}">
+            <div ng-repeat="actor in actors | filter : filterActor | orderBy : orderByProperty()" class="col-md-3 col-sm-6"
+                ng-class="{'bold-border' : actor === selectedActor}">
                 <div class="card" ng-click="onSelectActor(actor)">
                     <img class="card-img-top" ng-src="{{actor.image}} title={{actor.getFullName()}}">
                     <div class="card-body">
@@ -30,26 +32,30 @@
                 </div>
             </div>
         </div>
-        <input class="form-control my-3" placeholder="Filter actors by first name or last name" ng-model="query">
-
+        <div>
+            <input class="form-control my-3" placeholder="Filter actors by first name or last name" ng-model="query">
+        </div>
 
         <p class="text-center" ng-show="filterActor.length===0">Sorry, no actors were found</p>
 
         <div>
             <div class="form-check">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder" value="fname" class="form-check-input" name="optradio">Order by first name
-            </label>
+                    <input type="radio" ng-change="orderByProperty()" value="fname" class="form-check-input"
+                        name="optradio">Order by first name
+                </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder" value="lname" class="form-check-input" name="optradio">Order by last name
-            </label>
+                    <input type="radio" ng-change="orderByProperty()" value="lname" class="form-check-input"
+                        name="optradio">Order by last name
+                </label>
             </div>
             <div class="form-check disabled">
                 <label class="form-check-label">
-              <input type="radio" ng-model="selectedOrder" value="birthday" class="form-check-input" name="optradio">Order by birthday
-            </label>
+                    <input type="radio" ng-change="orderByProperty()" value="birthday" class="form-check-input"
+                        name="optradio">Order by birthday
+                </label>
             </div>
         </div>
 
