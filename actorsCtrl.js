@@ -43,11 +43,12 @@ app.controller("actorsCtrl", function ($scope, $http) {
             return true;
         }
 
-        if (actor.fname.toLowerCase().includes($scope.query.toLowerCase()) || actor.lname.toLowerCase().includes($scope.query.toLowerCase())) {
+        if (actor.fname.toLowerCase().startsWith($scope.query.toLowerCase()) || actor.lname.toLowerCase().startsWith($scope.query.toLowerCase())) {
             return true;
         } else {
             return false;
         }
+
     };
 
     $scope.selectedActor = null;
