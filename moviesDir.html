@@ -1,0 +1,12 @@
+<div>
+    <div class="movie-poster">
+        <img ng-src="{{movie.poster}}">
+    </div>
+    <div class="movie-details">
+        <h3>{{movie.title}}</h3>
+        <p>Release date: {{movie.releaseDate | date}}</p><br>
+        <p>Length: {{movie.length | number:0}}</p><br>
+        <p>Starring: {{movie.starsToString()}}</p><br>
+        <p>Director: {{movie.director}}</p><br>
+    </div>
+</div>
