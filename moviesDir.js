@@ -1,8 +1,7 @@
-app.directive("MovieList", function() {
-  
+app.directive("movieList", function () {
+
     return {
         templateUrl: "moviesDir.html",
         restrict: "E"
     }
-    
-  })
+})
