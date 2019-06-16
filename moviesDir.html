@@ -1,8 +1,8 @@
-<div>
-    <div class="movie-poster">
-        <img ng-src="{{movie.poster}}">
+<div class="row">
+    <div class="movie-poster col-md-4 col-sm-12">
+        <img class="img-fluid" ng-src="{{movie.poster}}">
     </div>
-    <div class="movie-details">
+    <div class="movie-details col-md-8 col-sm-12">
         <h3>{{movie.title}}</h3>
         <p>Release date: {{movie.releaseDate | date}}</p><br>
         <p>Length: {{movie.length | number:0}}</p><br>

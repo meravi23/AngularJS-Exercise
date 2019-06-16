@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -29,13 +30,19 @@ body {
     padding-right: 30px;
 }
 
+/* for responsiveness, better change movie section to col-md-4, col-md-8 etc instead of float */
+
 .movie-poster {
     float: left;
     width: 35%;
 }
 
-.movie-poster > img {
-    width: 50%;
+.movie-poster>img {
+    width: 75%;
+   /* place image in center */
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto; */
 }
 
 .movie-details {

@@ -19,33 +19,45 @@ app.controller("moviesCtrl", function ($scope, $http) {
 
     $scope.movies = [];
 
-    var movie = new Movie("Pump Up the Volume",
-        "1990-12-22",
-        "102",
-        "https://m.media-amazon.com/images/M/MV5BNzY2OTkzNzUyNl5BMl5BanBnXkFtZTgwNTY1NTk4NjE@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
-        ["Cristian Slater", "Samantha Mathis", "Anthony Lucero"],
-        "Allan Moyle");
-    $scope.movies.push(movie);
+    // var movie = new Movie("Pump Up the Volume",
+    //     "1990-12-22",
+    //     "102",
+    //     "https://m.media-amazon.com/images/M/MV5BNzY2OTkzNzUyNl5BMl5BanBnXkFtZTgwNTY1NTk4NjE@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+    //     ["Cristian Slater", "Samantha Mathis", "Anthony Lucero"],
+    //     "Allan Moyle");
+
+    // var movie2 = new Movie("A Few Good Men",
+    //     "1992-12-09",
+    //     "138",
+    //     "https://m.media-amazon.com/images/M/MV5BNzY2OTkzNzUyNl5BMl5BanBnXkFtZTgwNTY1NTk4NjE@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
+    //     ["Cristian Slater", "Samantha Mathis", "Anthony Lucero"],
+    //     "Rob Reiner");
+    // $scope.movies.push(movie);
+    // $scope.movies.push(movie2);
+
 
 
     //    Adding Movies (from TMDB key  0ddbf460202c4472e408048059e3a16d)
 
     $scope.addMovie = function (searchResult) {
-        var movieDetailsUrl =  "https://api.themoviedb.org/3/movie/" +
-        movieResult.id +
-        "?api_key=0ddbf460202c4472e408048059e3a16d&language=en-US";
+        var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" +
+            movieResult.id +
+            "?api_key=0ddbf460202c4472e408048059e3a16d&language=en-US&append_to_response=credits";
 
-        var getCredits = "https://api.themoviedb.org/3/movie/" +
-         movieResult.id +
-         "/credits?api_key=0ddbf460202c4472e408048059e3a16d";
-        
-        
-        $http.get(movieDetailsUrl).then(function(res) {
-            var movie =  new Movie(res.data.title,
-                 res.data.release_date,
-                 res.data.runtime);
-        })
-        
+
+        $http.get(movieDetailsUrl).then(function (res) {
+            var movie = new Movie(res.data.title,
+                res.data.release_date,
+                res.data.runtime,
+                ["Tom Cruise", "Demi Moore", "Jack Nicholson"],
+                "Rob Reiner");
+
+            $scope.movies.push(movie);
+
+        }, function (err) {
+            console.error(err);
+        });
+
     };
 
     //Adding Actor (getting details from TMDB)

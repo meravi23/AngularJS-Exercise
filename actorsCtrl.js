@@ -29,7 +29,7 @@ app.controller("actorsCtrl", function ($scope, $http) {
     });
 
 
-    console.log($scope.actors);
+    //console.log($scope.actors);
 
     //**** Presentation Logic ****/
     // $scope.addActor = function() {
