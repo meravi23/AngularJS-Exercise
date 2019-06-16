@@ -28,3 +28,23 @@ body {
     display: inline;
     padding-right: 30px;
 }
+
+.movie-poster {
+    float: left;
+    width: 35%;
+}
+
+.movie-poster > img {
+    width: 50%;
+}
+
+.movie-details {
+    float: left;
+    width: 65%;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
