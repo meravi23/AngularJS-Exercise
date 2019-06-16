@@ -9,7 +9,7 @@
     <script data-require="angularjs@1.6.4" data-semver="1.6.4"
         src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <script src="app.js"></script>
     <script src="actorsCtrl.js"></script>
     <script src="moviesCtrl.js"></script>
@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <h1>Actors Gallery</h1>
         <div ng-controller="actorsCtrl">
@@ -67,15 +66,14 @@
         </div>
 
         <div class="movies my-3" ng-controller="moviesCtrl">
-            <div class="list-group">
+                <div class="list-group">
+            
                 <div ng-repeat="movie in movies" class="row list-group-item list-group-item-action">
                     <movie-list></movie-list>
                 </div>
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>

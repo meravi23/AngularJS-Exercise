@@ -43,26 +43,25 @@ app.controller("moviesCtrl", function ($scope, $http) {
         $http.get(movieDetailsUrl).then(function(res) {
             var movie =  new Movie(res.data.title,
                  res.data.release_date,
-                 res.data.runtime,
-                 res.data.)
-        }
+                 res.data.runtime);
+        })
         
     };
 
     //Adding Actor (getting details from TMDB)
-      $scope.addActor = function(searchResult) {
-        var actorDetailsUrl = "https://api.themoviedb.org/3/person/" + 
-          searchResult.id +"?api_key=53d2ee2137cf3228aefae083c8158855";
+    //   $scope.addActor = function(searchResult) {
+    //     var actorDetailsUrl = "https://api.themoviedb.org/3/person/" + 
+    //       searchResult.id +"?api_key=53d2ee2137cf3228aefae083c8158855";
 
-        $http.get(actorDetailsUrl).then(function(res) {
-          var actor = new Actor(res.data.name,
-            res.data.profile_path, 
-            res.data.birthday,
-            res.data.imdb_id);
+    //     $http.get(actorDetailsUrl).then(function(res) {
+    //       var actor = new Actor(res.data.name,
+    //         res.data.profile_path, 
+    //         res.data.birthday,
+    //         res.data.imdb_id);
 
-          $scope.favoriteActors.push(actor);
-        }, function(err) {
-          console.error(err);
-        });
+    //       $scope.favoriteActors.push(actor);
+    //     }, function(err) {
+    //       console.error(err);
+    //     });
 
 });
