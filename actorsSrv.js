@@ -20,7 +20,6 @@ app.factory("actors", function ($log, $http, convert, $q) {
     }
 
     var actors = [];
-
     function getActors() {
         var async = $q.defer();
 

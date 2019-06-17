@@ -1,5 +1,11 @@
-app.controller("actorsCtrl", function ($scope, $http, convert) {
+app.controller("actorsCtrl", function ($scope, $http, convert, actors) {
     //$scope.test = "blabla";
+
+    actors.getActors().then(function(actors) {
+        $scope.actors = actors;
+      }, function(err) {
+        $log.error(err);
+      })
 
     $scope.query = "";
     $scope.filterActor = function (actor) {
