@@ -1,9 +1,9 @@
 app.factory("movies", function ($log, $http, convert, $q) {
 
-    function Movie(title, releaseDate, length, poster, stars, director) {
+    function Movie(title, releaseDate, runtime, poster, stars, director) {
         this.title = title;
         this.releaseDate = releaseDate;
-        this.length = length; // movie length
+        this.runtime = runtime; // movie length
         this.poster = poster;
         this.stars = stars;
         this.director = director;
@@ -15,7 +15,7 @@ app.factory("movies", function ($log, $http, convert, $q) {
     }
 
     Movie.prototype.convertMinToHours = function () {
-        return convert.convertMinToHours(this.length);
+        return convert.convertMinToHours(this.runtime);
     }
 
     var movies = [];
