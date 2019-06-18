@@ -28,7 +28,7 @@ app.factory("movies", function ($log, $http, convert, $q) {
     }
 
     
-        var movieList = [];
+        var movies = [];
         function getMovies() {
             var async = $q.defer();
 
@@ -36,10 +36,10 @@ app.factory("movies", function ($log, $http, convert, $q) {
                 // on success
                 for (var i = 0; i < res.data.length; i++) {
                     var movie = new Movie(res.data[i]);
-                    movieList.push(movie);
+                    movies.push(movie);
                 }
 
-                async.resolve(movieList);
+                async.resolve(movies);
             }, function (err) {
                 $log.error(err);
                 async.reject(err);

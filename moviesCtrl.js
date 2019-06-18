@@ -1,5 +1,7 @@
 app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
 
+    $scope.movies = [];
+
     movies.getMovies().then(function (movies) {
         $scope.movies = movies;
     }, function (err) {
@@ -30,19 +32,17 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
     $scope.addMovie = function (searchResult) {
         var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" +
             searchResult.id +
-            "?api_key=0ddbf460202c4472e408048059e3a16d";
-
+            "?api_key=0ddbf460202c4472e408048059e3a16d&append_to_response=credits";
 
         $http.get(movieDetailsUrl).then(function (res) {
             var movie = new Movie(res.data.title,
                 res.data.release_date,
                 res.data.runtime,
                 res.data.poster_path,
-                ["Tom Cruise", "Demi Moore", "Jack Nicholson"],
-                "Rob Reiner");
+                [res.data.credits.cast[0].name, res.data.credits.cast[1].name, res.data.credits.cast[2].name],
+                res.data.credits.crew[0].name);
 
-            movieList.push(movie);
-
+            movies.push(movie);
 
         }, function (err) {
             console.error(err);
@@ -51,7 +51,9 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
         // clear search box
         $scope.movieUserQuery = "";
         $scope.searchResults = [];
+
     };
+
 
 });
 

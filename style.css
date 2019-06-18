@@ -30,28 +30,3 @@ body {
     padding-right: 30px;
 }
 
-/* for responsiveness, better change movie section to col-md-4, col-md-8 etc instead of float */
-
-.movie-poster {
-    float: left;
-    width: 35%;
-}
-
-.movie-poster>img {
-    width: 75%;
-   /* place image in center */
-    /* display: block;
-    margin-left: auto;
-    margin-right: auto; */
-}
-
-.movie-details {
-    float: left;
-    width: 65%;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
