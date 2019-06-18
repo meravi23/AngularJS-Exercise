@@ -47,6 +47,8 @@
                 <p class="text-center" ng-show="filteredActors.length==0">Sorry, no actors were found</p>
             </div>
 
+                <!--------------------- radio buttons --------------------->
+
             <div>
                 <div class="form-check">
                     <label class="form-check-label">
@@ -67,16 +69,35 @@
                     </label>
                 </div>
             </div>
+
+                <!--------------------- end radio buttons --------------------->
         </div>
 
         <div class="movies my-3" ng-controller="moviesCtrl">
             <h2>Movies</h2>
+
+            <div>
+                <input class="form-control my-3"
+                    placeholder="search a movie" ng-model="movieUserQuery" ng-change="updateSearchResults()">
+                    <div class="search-results" ng-show="searchResults.length > 0">
+                        <ul class="list-group">
+                          <a href="#" ng-repeat="result in searchResults" 
+                          class="list-group-item list-group-item-action" ng-click="addMovie(result)">{{result.title}}</a>
+                        </ul>
+                      </div>
+            </div>
+
+            <div>
+                <p class="text-center" ng-show="filteredMovies.length==0">Sorry, no movies were found</p>
+            </div>
 
             <div class="list-group">
                 <div ng-repeat="movie in movies" class="row list-group-item list-group-item-action">
                     <movie-item></movie-item>
                 </div>
             </div>
+        
+        
         </div>
     </div>
 </body>
