@@ -3,17 +3,17 @@
     "releaseDate": "1990-12-22",
     "runtime": 102,
     "poster": "https://m.media-amazon.com/images/M/MV5BNzY2OTkzNzUyNl5BMl5BanBnXkFtZTgwNTY1NTk4NjE@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
-    "stars": ["Cristian Slater","Samantha Mathis", "Anthony Lucero"],
+    "stars": ["Cristian Slater", " Someone else"],
     "director": "Allan Moyle"
 },
 
 {
     "title": "A Few Good Men",
-    "releaseDate": "1990-12-22",
+    "releaseDate": "1992-12-07",
     "runtime": 138,
-    "poster": "https://m.media-amazon.com/images/M/MV5BNzY2OTkzNzUyNl5BMl5BanBnXkFtZTgwNTY1NTk4NjE@._V1_SY1000_CR0,0,677,1000_AL_.jpg",
-    "stars": ["Cristian Slater","Samantha Mathis", "Anthony Lucero"],
-    "director": "Allan Moyle"
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmRlZDQ1MmUtMzE2Yi00YTkxLTk1MGMtYmIyYWQwODcxYzRlXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_.jpg",
+    "stars": ["Demi Moore", "Tom Cuise", "Jack Nicholson"],
+    "director": "Rob Reiner"
 }
 
 ]

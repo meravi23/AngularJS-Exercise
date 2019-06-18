@@ -32,7 +32,8 @@
                             <a ng-href="{{actor.imdbLink}}" target="_BLANK">
                                 <h4 class="card-title">{{actor.getFullName()}}</h4>
                             </a>
-                            <p class="card-text">Birthday: {{actor.birthday | date}}   Age: {{actor.getAge() | number : 0}}</p>
+                            <p class="card-text">Birthday: {{actor.birthday | date}}   (Age: {{actor.getAge() | number : 0}})</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -73,7 +74,7 @@
 
             <div class="list-group">
                 <div ng-repeat="movie in movies" class="row list-group-item list-group-item-action">
-                    <movie-list></movie-list>
+                    <movie-item></movie-item>
                 </div>
             </div>
         </div>

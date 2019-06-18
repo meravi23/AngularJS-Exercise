@@ -1,12 +1,21 @@
 app.factory("movies", function ($log, $http, convert, $q) {
 
-    function Movie(title, releaseDate, runtime, poster, stars, director) {
-        this.title = title;
-        this.releaseDate = releaseDate;
-        this.runtime = runtime; // movie length
-        this.poster = poster;
-        this.stars = stars;
-        this.director = director;
+    function Movie(titleOrObject, releaseDate, runtime, poster, stars, director) {
+        if (arguments.length > 1) {
+            this.titleOrObject = title;
+            this.releaseDate = releaseDate;
+            this.runtime = runtime; // movie length
+            this.poster = poster;
+            this.stars = stars;
+            this.director = director;
+        } else {
+            this.title = titleOrObject.title;
+            this.releaseDate = titleOrObject.releaseDate;
+            this.runtime = titleOrObject.runtime; // movie length
+            this.poster = titleOrObject.poster;
+            this.stars = titleOrObject.stars;
+            this.director = titleOrObject.director;
+        }
     }
 
     Movie.prototype.starsToString = function () {
@@ -22,13 +31,13 @@ app.factory("movies", function ($log, $http, convert, $q) {
     function getMovies() {
         var async = $q.defer();
 
-        $http.get("movies.json").then(function(res) {
+        $http.get("movies.json").then(function (res) {
             // on success
             for (var i = 0; i < res.data.length; i++) {
                 var movie = new Movie(res.data[i]);
                 movies.push(movie);
             }
-            
+
             async.resolve(movies);
         }, function (err) {
             $log.error(err);
@@ -39,7 +48,7 @@ app.factory("movies", function ($log, $http, convert, $q) {
     }
 
     return {
-        getMovies : getMovies
+        getMovies: getMovies
     }
 
 });

@@ -9,7 +9,8 @@ app.factory("convert", function () {
 
     function getAge(birthday) {
         var bday = new Date(birthday);
-        var yearNow = bday.getFullYear();
+        var today = new Date();
+        var yearNow = today.getFullYear();
         var yearBday = bday.getFullYear();
         var age = yearNow - yearBday;
 

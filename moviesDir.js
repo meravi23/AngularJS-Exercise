@@ -1,4 +1,4 @@
-app.directive("movieList", function () {
+app.directive("movieItem", function () {
 
     return {
         templateUrl: "moviesDir.html",
