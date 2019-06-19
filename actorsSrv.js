@@ -31,8 +31,9 @@ app.factory("actors", function ($log, $http, convert, $q) {
         return convert.getAge(this.birthday);
     }
 
-    var actors = [];
     function getActors() {
+        var actors = [];
+
         var async = $q.defer();
 
         $http.get("actors.json").then(function (res) {

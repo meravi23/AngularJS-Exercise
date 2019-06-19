@@ -22,12 +22,10 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
                 console.error(err);
             })
         } else {
-            $scope.searchResults = [];  // create a new empty array
+            $scope.searchResults = [];  // creating a new empty array
         }
     }
-
-    //    Adding Movies (from TMDB key  0ddbf460202c4472e408048059e3a16d)
-    //first add search box and get user's choice (id)
+    
 
     $scope.addMovie = function (searchResult) {
         var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" +
@@ -35,14 +33,14 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
             "?api_key=0ddbf460202c4472e408048059e3a16d&append_to_response=credits";
 
         $http.get(movieDetailsUrl).then(function (res) {
-            var movie = new Movie(res.data.title,
+            var movie = new movies.Movie(res.data.title,
                 res.data.release_date,
                 res.data.runtime,
                 res.data.poster_path,
                 [res.data.credits.cast[0].name, res.data.credits.cast[1].name, res.data.credits.cast[2].name],
                 res.data.credits.crew[0].name);
 
-            movies.push(movie);
+            $scope.movies.push(movie);
 
         }, function (err) {
             console.error(err);

@@ -6,104 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AngularJS Exercise</title>
-    <script data-require="angularjs@1.6.4" data-semver="1.6.4"
-        src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <script data-require="angularjs@1.6.4" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
     <script src="actorsCtrl.js"></script>
     <script src="moviesCtrl.js"></script>
+    <script src="homeCtrl.js"></script>
+    <script src="navCtrl.js"></script>
     <script src="moviesDir.js"></script>
     <script src="convertSrv.js"></script>
     <script src="actorsSrv.js"></script>
     <script src="moviesSrv.js"></script>
+
 </head>
 
 <body>
-    <div class="container">
-        <h1>Actors Gallery</h1>
-        <div ng-controller="actorsCtrl">
-            <div class="row" {{selectedOrder}}>
-                <div ng-repeat="actor in actors | filter : filterActor | orderBy : orderProperty as filteredActors"
-                    class="col-md-3 col-sm-6" ng-class="{'bold-border' : actor === selectedActor}">
-                    <div class="card" ng-click="onSelectActor(actor)">
-                        <img class="card-img-top" ng-src="{{actor.image}} alt={{actor.getFullName()}}">
-                        <div class="card-body">
-                            <a ng-href="{{actor.imdbLink}}" target="_BLANK">
-                                <h4 class="card-title">{{actor.getFullName()}}</h4>
-                            </a>
-                            <p class="card-text">Birthday: {{actor.birthday | date}} (Age:
-                                {{actor.getAge() | number : 0}})</p>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <input class="form-control my-3"
-                    placeholder="Filter actors by first name or last name (first letters in name)" ng-model="query">
-            </div>
+    <nav class="navbar navbar-expand-sm bg-light" ng-controller="navCtrl">
+            <!-- ng-class="{'active' : condition} -->
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link navbar-brand" href="#!">Movies.com</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!/actors">Actors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!/movies">Movies</a>
+            </li>
+        </ul>
 
-            <div>
-                <p class="text-center" ng-show="filteredActors.length==0">Sorry, no actors were found</p>
-            </div>
+    </nav>
 
-            <!--------------------- radio buttons --------------------->
+    <ng-view></ng-view>
 
-            <div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="radio" ng-change="orderByProperty('fname')" ng-model="value" value="fname"
-                            class="form-check-input" name="optradio">Order by first name
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="radio" ng-change="orderByProperty('lname')" ng-model="value" value="lname"
-                            class="form-check-input" name="optradio">Order by last name
-                    </label>
-                </div>
-                <div class="form-check disabled">
-                    <label class="form-check-label">
-                        <input type="radio" ng-change="orderByProperty('birthday')" ng-model="value" value="birthday"
-                            class="form-check-input" name="optradio">Order by birthday
-                    </label>
-                </div>
-            </div>
-
-            <!--------------------- end radio buttons --------------------->
-        </div>
-
-        <!-------------- movies ----------------------->
-
-        <div class="movies my-3" ng-controller="moviesCtrl">
-            <h2>Movies</h2>
-
-            <div>
-                <input class="form-control my-3" type="text" placeholder="search a movie"
-                ng-model="movieUserQuery"
-                ng-change="updateSearchResults()">
-                <div class="search-results" ng-show="searchResults.length > 0">
-                    <ul class="list-group">
-                        <a href="#" ng-repeat="result in searchResults"
-                        class="list-group-item list-group-item-action"
-                        ng-click="addMovie(result)">{{result.title}}</a>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <!-- <p class="text-center" ng-show="filteredMovies.length==0">Sorry, no movies were found</p> -->
-            </div>
-
-
-            <div>
-                <movie-item></movie-item>
-            </div>
-        </div>
-
-        <!-------------- end movies ----------------------->
-    </div>
 </body>
 
 </html>

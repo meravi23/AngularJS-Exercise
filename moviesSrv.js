@@ -2,16 +2,16 @@ app.factory("movies", function ($log, $http, convert, $q) {
 
     function Movie(titleOrObject, releaseDate, runtime, poster, stars, director) {
         if (arguments.length > 1) {
-            this.titleOrObject = title;
+            this.titleOrObject = titleOrObject;
             this.releaseDate = releaseDate;
-            this.runtime = runtime; // movie length
-            this.poster = poster;
+            this.runtime = runtime; // movie's length
+            this.poster = "https://image.tmdb.org/t/p/w500" + poster;
             this.stars = stars;
             this.director = director;
         } else {
             this.title = titleOrObject.title;
             this.releaseDate = titleOrObject.releaseDate;
-            this.runtime = titleOrObject.runtime; // movie length
+            this.runtime = titleOrObject.runtime; 
             this.poster = titleOrObject.poster;
             this.stars = titleOrObject.stars;
             this.director = titleOrObject.director;
@@ -28,28 +28,29 @@ app.factory("movies", function ($log, $http, convert, $q) {
     }
 
     
+    function getMovies() {
         var movies = [];
-        function getMovies() {
-            var async = $q.defer();
+        var async = $q.defer();
 
-            $http.get("movies.json").then(function (res) {
-                // on success
-                for (var i = 0; i < res.data.length; i++) {
-                    var movie = new Movie(res.data[i]);
-                    movies.push(movie);
-                }
+        $http.get("movies.json").then(function (res) {
 
-                async.resolve(movies);
-            }, function (err) {
-                $log.error(err);
-                async.reject(err);
-            });
+            for (var i = 0; i < res.data.length; i++) {
+                var movie = new Movie(res.data[i]);
+                movies.push(movie);
+            }
 
-            return async.promise;
-        }
+            async.resolve(movies);
+        }, function (err) {
+            $log.error(err);
+            async.reject(err);
+        });
 
-        return {
-            getMovies: getMovies
-        }
+        return async.promise;
+    }
 
-    });
+    return {
+        Movie : Movie,
+        getMovies: getMovies
+    }
+
+});

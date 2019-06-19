@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Actors Gallery</h1>
+    <div>
+        <div class="row" {{selectedOrder}}>
+            <div ng-repeat="actor in actors | filter : filterActor | orderBy : orderProperty as filteredActors" class="col-md-3 col-sm-6"
+                ng-class="{'bold-border' : actor === selectedActor}">
+                <div class="card" ng-click="onSelectActor(actor)">
+                    <img class="card-img-top" ng-src="{{actor.image}} alt={{actor.getFullName()}}">
+                    <div class="card-body">
+                        <a ng-href="{{actor.imdbLink}}" target="_BLANK">
+                            <h4 class="card-title">{{actor.getFullName()}}</h4>
+                        </a>
+                        <p class="card-text">Birthday: {{actor.birthday | date}} (Age: {{actor.getAge() | number : 0}})</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input class="form-control my-3" placeholder="Filter actors by first name or last name (first letters in name)" ng-model="query">
+        </div>
+
+        <div>
+            <p class="text-center" ng-show="filteredActors.length==0">Sorry, no actors were found</p>
+        </div>
+
+
+        <div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" ng-change="orderByProperty('fname')" ng-model="value" value="fname" class="form-check-input" name="optradio">Order by first name
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" ng-change="orderByProperty('lname')" ng-model="value" value="lname" class="form-check-input" name="optradio">Order by last name
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <label class="form-check-label">
+                    <input type="radio" ng-change="orderByProperty('birthday')" ng-model="value" value="birthday" class="form-check-input" name="optradio">Order by birthday
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>

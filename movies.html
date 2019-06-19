@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="movies my-3">
+        <h2>Movies</h2>
+
+        <div>
+            <input class="form-control my-3" type="text" placeholder="search a movie" ng-model="movieUserQuery" ng-change="updateSearchResults()">
+            <div class="search-results" ng-show="searchResults.length > 0">
+                <ul class="list-group">
+                    <a href="javascript:void(0)" ng-repeat="result in searchResults" class="list-group-item list-group-item-action" ng-click="addMovie(result)">{{result.title}}</a>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <!-- <p class="text-center" ng-show="filteredMovies.length==0">Sorry, no movies were found</p> -->
+        </div>
+
+
+        <div>
+            <movie-item></movie-item>
+        </div>
+    </div>
+
+</div>
