@@ -1,11 +1,12 @@
 <div class="list-group">
-    <div ng-repeat="movie in movies" class="list-group-item list-group-item-action">
+    <div ng-repeat="movie in movies" class="list-group-item list-group-item-action"
+            ng-dblClick="openMovieDetails(movie)">
         <div class="row">
             <div class="movie-poster col-md-4 col-sm-12">
                 <img class="img-fluid" ng-src="{{movie.poster}}">
             </div>
             <div class="movie-details col-md-8 col-sm-12">
-                <h3>{{movie.title}}</h3>
+                <h3>{{movie.titleOrObject}}</h3>
                 <p>Release date: {{movie.releaseDate | date}}</p><br>
                 <p>Runtime: {{movie.convertMinToHours()}}</p><br>
                 <p>Starring: {{movie.starsToString()}}</p><br>

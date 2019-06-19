@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>Movie Details</h1>
+    <p>Title: {{movie.titleOrObject}}</p>
+    <p>Release date: {{movie.releaseDate | date}}</p>
+    <p>Runtime: {{movie.convertMinToHours()}}</p>
+    <p>Starring: {{movie.starsToString()}}</p>
+    <p>Director: {{movie.director}}</p>
+</div>

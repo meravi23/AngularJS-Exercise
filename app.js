@@ -12,5 +12,8 @@ app.config(function ($routeProvider) {
         }).when("/movies", {
             templateUrl: "movies.html",
             controller: "moviesCtrl"
+        }).when("/movies/:id", {
+            templateUrl: "movieDetails.html",
+            controller: "movieDetailsCtrl"
         });
 });

@@ -1,4 +1,4 @@
-app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
+app.controller("moviesCtrl", function ($scope, $http, convert, movies, $location) {
 
     $scope.movies = [];
 
@@ -25,7 +25,7 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
             $scope.searchResults = [];  // creating a new empty array
         }
     }
-    
+
 
     $scope.addMovie = function (searchResult) {
         var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" +
@@ -33,7 +33,7 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
             "?api_key=0ddbf460202c4472e408048059e3a16d&append_to_response=credits";
 
         $http.get(movieDetailsUrl).then(function (res) {
-            var movie = new movies.Movie(res.data.title,
+            var movie = new movies.Movie(res.data.title, //added "movies."!!!"
                 res.data.release_date,
                 res.data.runtime,
                 res.data.poster_path,
@@ -52,6 +52,22 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies) {
 
     };
 
+    
+    // $scope.selectedMovie = null;
+    // $scope.onSelectMovie = function (movie) {
+    //     if ($scope.selectedMovie === movie) {
+    //         $scope.selectedMovie = null;
+    //     } else {
+    //         $scope.selectedMovie = movie;
+    //     }
+    // }
+
+    $scope.openMovieDetails = function (movie) {
+
+        var index = $scope.movies.indexOf(movie);
+        $location.path("/movies/" + index);
+    }
+   
 
 });
 
