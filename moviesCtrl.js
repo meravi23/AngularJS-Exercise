@@ -52,22 +52,12 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies, $location
 
     };
 
-    
-    // $scope.selectedMovie = null;
-    // $scope.onSelectMovie = function (movie) {
-    //     if ($scope.selectedMovie === movie) {
-    //         $scope.selectedMovie = null;
-    //     } else {
-    //         $scope.selectedMovie = movie;
-    //     }
-    // }
-
     $scope.openMovieDetails = function (movie) {
 
         var index = $scope.movies.indexOf(movie);
         $location.path("/movies/" + index);
     }
-   
+
 
 });
 
