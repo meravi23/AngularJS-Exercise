@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AngularJS Exercise</title>
-    <script data-require="angularjs@1.6.4" data-semver="1.6.4" src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
+    <script data-require="angularjs@1.6.4" data-semver="1.6.4"
+        src="https://code.angularjs.org/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
@@ -25,16 +26,16 @@
 
 <body>
 
+    <!-- ng-class="{'active' : }" -->
+
     <nav class="navbar navbar-expand-sm bg-light" ng-controller="navCtrl">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link navbar-brand" href="#!">Movies.com</a>
+                <a class="nav-link" href="#!" ng-click="onSelectLink(link)">Movies.com</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#!/actors">Actors</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#!/movies">Movies</a>
+            <li class="nav-item" ng-repeat="link in links" ng-class="{'active' : link === selectedLink}"
+                ng-click="onSelectLink(link)">
+                <a class="nav-link navbar-brand" href="#!/{{link.toLowerCase()}}">{{link}}</a>
             </li>
         </ul>
 
