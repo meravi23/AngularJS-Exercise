@@ -37,6 +37,15 @@ app.controller("actorsCtrl", function ($scope, $http, convert, actors) {
 
     };
 
+    $scope.reverseOrderProperty = "";
+    $scope.reverseOrderByProperty = function (propertyName) {
+
+        $scope.reverseOrderProperty = propertyName;
+
+    };
+
+    
+
     
 
 });

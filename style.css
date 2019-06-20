@@ -30,6 +30,9 @@ body {
     padding-right: 30px;
 }
 
+.nav-item {
+}
+
 nav > ul > li > a {
     color: grey;
   }
