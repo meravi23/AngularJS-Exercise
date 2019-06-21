@@ -10,6 +10,7 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies, $location
 
 
     // updating search results using TMDB
+    $scope.movieUserQuery = "";
     $scope.updateSearchResults = function () {
         if ($scope.movieUserQuery) {
 
