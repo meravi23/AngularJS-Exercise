@@ -1,5 +1,5 @@
 app.controller("moviesCtrl", function ($scope, $http, $log, movies, $location) {
-
+  
     $scope.movies = [];
 
     movies.getMovies().then(function (movies) {
@@ -14,8 +14,8 @@ app.controller("moviesCtrl", function ($scope, $http, $log, movies, $location) {
     $scope.updateSearchResults = function () {
         if ($scope.movieUserQuery) {
 
-            var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key=0ddbf460202c4472e408048059e3a16d&query="
-                + $scope.movieUserQuery;
+            var searchUrl = "https://api.themoviedb.org/3/search/movie?api_key="
+                + movies.API_KEY + "&query=" + $scope.movieUserQuery;
 
             $http.get(searchUrl).then(function (res) {
                 $scope.searchResults = res.data.results;
@@ -30,8 +30,7 @@ app.controller("moviesCtrl", function ($scope, $http, $log, movies, $location) {
 
     $scope.addMovie = function (searchResult) {
         var movieDetailsUrl = "https://api.themoviedb.org/3/movie/" +
-            searchResult.id +
-            "?api_key=0ddbf460202c4472e408048059e3a16d&append_to_response=credits";
+            searchResult.id + "?api_key=" + movies.API_KEY + "&append_to_response=credits";
 
         $http.get(movieDetailsUrl).then(function (res) {
             var starsCast = [];

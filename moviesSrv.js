@@ -1,5 +1,5 @@
 app.factory("movies", function ($log, $http, convert, $q) {
-
+    const API_KEY = "0ddbf460202c4472e408048059e3a16d";
     function Movie(titleOrObject, releaseDate, runtime, poster, stars, director) {
         if (arguments.length > 1) {
             this.titleOrObject = titleOrObject;
@@ -27,16 +27,15 @@ app.factory("movies", function ($log, $http, convert, $q) {
         return convert.convertMinToHours(this.runtime);
     }
 
-
+    
     function getMovies() {
         var movies = [];
         var async = $q.defer();
         
+        $http.get("https://api.themoviedb.org/3/movie/550?api_key=" + API_KEY).then(function (res) {
 
-        $http.get("https://api.themoviedb.org/3/movie/550?api_key=0ddbf460202c4472e408048059e3a16d&callback=test").then(function (res) {
-
-        for (var i = 0; i < res.data.results.length; i++) {
-                var movie = new Movie(res.data.results[i]);
+        for (var i = 0; i < res.data.length; i++) {
+                var movie = new Movie(res.data[i]);
                 movies.push(movie);
             }
 
@@ -70,6 +69,7 @@ app.factory("movies", function ($log, $http, convert, $q) {
 
     return {
         Movie: Movie,
+        API_KEY : API_KEY,
         getMovies: getMovies,
         getMovieByIndex : getMovieByIndex
     }
