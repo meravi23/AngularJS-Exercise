@@ -1,4 +1,4 @@
-app.controller("moviesCtrl", function ($scope, $http, convert, movies, $location) {
+app.controller("moviesCtrl", function ($scope, $http, $log, movies, $location) {
 
     $scope.movies = [];
 
@@ -34,12 +34,24 @@ app.controller("moviesCtrl", function ($scope, $http, convert, movies, $location
             "?api_key=0ddbf460202c4472e408048059e3a16d&append_to_response=credits";
 
         $http.get(movieDetailsUrl).then(function (res) {
-            var movie = new movies.Movie(res.data.title, //added "movies."!!!"
+            var starsCast = [];
+            for (var i=0; res.data.credits.cast && i <= 2; i++) {
+                starsCast.push(res.data.credits.cast[i].name);
+            }
+
+            var director = "";
+            res.data.credits.crew.forEach(function(entry){
+                if (entry.job == 'Director') {
+                    director = entry.name;
+                }
+            });
+            
+            var movie = new movies.Movie(res.data.title,
                 res.data.release_date,
                 res.data.runtime,
                 res.data.poster_path,
-                [res.data.credits.cast[0].name, res.data.credits.cast[1].name, res.data.credits.cast[2].name],
-                res.data.credits.crew[0].name);
+                starsCast,
+                director);
 
             $scope.movies.push(movie);
 

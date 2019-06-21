@@ -11,7 +11,7 @@ app.factory("movies", function ($log, $http, convert, $q) {
         } else {
             this.title = titleOrObject.title;
             this.releaseDate = titleOrObject.releaseDate;
-            this.runtime = titleOrObject.runtime; 
+            this.runtime = titleOrObject.runtime;
             this.poster = titleOrObject.poster;
             this.stars = titleOrObject.stars;
             this.director = titleOrObject.director;
@@ -27,15 +27,16 @@ app.factory("movies", function ($log, $http, convert, $q) {
         return convert.convertMinToHours(this.runtime);
     }
 
-    
+
     function getMovies() {
         var movies = [];
         var async = $q.defer();
+        
 
-        $http.get("movies.json").then(function (res) {
+        $http.get("https://api.themoviedb.org/3/movie/550?api_key=0ddbf460202c4472e408048059e3a16d&callback=test").then(function (res) {
 
-            for (var i = 0; i < res.data.length; i++) {
-                var movie = new Movie(res.data[i]);
+        for (var i = 0; i < res.data.results.length; i++) {
+                var movie = new Movie(res.data.results[i]);
                 movies.push(movie);
             }
 
@@ -48,9 +49,29 @@ app.factory("movies", function ($log, $http, convert, $q) {
         return async.promise;
     }
 
+
+    // Returning (with a promise) a single movie by its index in the array
+    function getMovieByIndex(index) {
+        var async = $q.defer();
+
+        // Getting all the movies and returning a single movie by its index in the array
+        getMovies().then(function (movies) {
+            if (index >= movies.length) {
+                async.reject("Index out of bounds")
+            }
+
+            async.resolve(movies[index]);
+        }, function (err) {
+            async.reject(err);
+        })
+
+        return async.promise;
+    }
+
     return {
-        Movie : Movie,
-        getMovies: getMovies
+        Movie: Movie,
+        getMovies: getMovies,
+        getMovieByIndex : getMovieByIndex
     }
 
 });
