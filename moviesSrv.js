@@ -55,9 +55,9 @@ app.factory("movies", function ($log, $http, convert, $q) {
 
         // Getting all the movies and returning a single movie by its index in the array
         getMovies().then(function (movies) {
-            if (index >= movies.length) {
-                async.reject("Index out of bounds")
-            }
+            // if (index >= movies.length) {
+            //     async.reject("Index out of bounds");
+            // }
 
             async.resolve(movies[index]);
         }, function (err) {

@@ -45,7 +45,8 @@ app.controller("moviesCtrl", function ($scope, $http, $log, movies, $location) {
                 }
             });
             
-            var movie = new movies.Movie(res.data.title,
+            var movie = new movies.Movie(
+                res.data.title,
                 res.data.release_date,
                 res.data.runtime,
                 res.data.poster_path,
